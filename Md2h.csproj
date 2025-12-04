@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="JS.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="JS.js" />
+    <EmbeddedResource Include="Style.css" />
+  </ItemGroup>
+
+</Project>
