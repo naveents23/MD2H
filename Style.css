@@ -1,8 +1,7 @@
-﻿
 /* Fluent-inspired dark theme using only element selectors */
 :root {
-    --bg: #091f2c;
-    --panel: #091f2c;
+    --bg: #0f0f11;
+    --panel: #0f0f11;
     --muted: #858585;
     /*--text: #f7f8fa*/
     --text: #E6F3FA;
@@ -11,12 +10,15 @@
     --accent-contrast: #1e3a5f;
     --focus: rgba(0, 122, 204, 0.2);
     --code-bg: #1e1e1e;
-    --code-text: #d4d4d4;
-    --h1-color: #E71F5B;
-    --h2-color: #D24AC2; /* H2 — pale cyan */
-    --h3-color: #C7EEFF; /* H3 — light blue */
+    --code-text: #dd7171;
+    --h1-color: #e5809e;
+    --h2-color: #e292d9;
+    /* H2 — pale cyan */
+    --h3-color: #C7EEFF;
+    /* H3 — light blue */
     --text-color: #E6F3FA;
-
+    --anchor-link-color: #6cb6ff;
+    --tableBorder: #c5aaaa;
 
     * {
         margin: 0;
@@ -24,7 +26,8 @@
         box-sizing: border-box;
     }
 
-    html, body {
+    html,
+    body {
         height: 100%;
         background: var(--bg);
         color: var(--text);
@@ -34,6 +37,32 @@
     body {
         display: flex;
     }
+
+    li {
+        font-size: 1.2rem;
+         margin-left: 2.0rem;
+ margin-top: 0.6rem;
+ margin-bottom: 0.6rem;
+    }
+
+    a {
+        font-size: 1.2rem;
+        background-color: transparent;
+        color: var(--anchor-link-color);
+    }
+
+    table,
+    th,
+    td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        margin-left: 1rem;
+        border-color: var(--tableBorder);
+        text-align: center;
+        font-size: 1.2rem;
+ }
+
+
     /* Sidebar */
     aside {
         width: 260px;
@@ -44,94 +73,96 @@
         flex-shrink: 0;
     }
 
-        aside::-webkit-scrollbar {
-            width: 8px;
-        }
+    aside::-webkit-scrollbar {
+        width: 8px;
+    }
 
-        aside::-webkit-scrollbar-thumb {
-            background: rgba(255,255,255,0.12);
-            border-radius: 4px;
-        }
+    aside::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.12);
+        border-radius: 4px;
+    }
+
     /* Nav tree using details/summary */
     nav {
         padding: 0.5rem;
         font-size: 0.95rem;
     }
 
-        nav details {
-            border-radius: 4px;
-        }
+    nav details {
+        border-radius: 4px;
+    }
 
-            nav details + details {
-                margin-top: 0.25rem;
-            }
+    nav details+details {
+        margin-top: 0.25rem;
+    }
 
-        nav summary {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.5rem 0.6rem;
-            cursor: pointer;
-            border-radius: 4px;
-            color: var(--text);
-        }
+    nav summary {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem 0.6rem;
+        cursor: pointer;
+        border-radius: 4px;
+        color: var(--text);
+    }
 
-            nav summary:hover {
-                background: rgba(0,122,204,0.10);
-            }
+    nav summary:hover {
+        background: rgba(0, 122, 204, 0.10);
+    }
 
-            nav summary::before {
-                content: "▸";
-                display: inline-block;
-                width: 1rem;
-                color: var(--muted);
-                transition: transform 0.12s ease, color 0.12s ease;
-            }
+    nav summary::before {
+        content: "▸";
+        display: inline-block;
+        width: 1rem;
+        color: var(--muted);
+        transition: transform 0.12s ease, color 0.12s ease;
+    }
 
-        nav details[open] > summary::before {
-            transform: rotate(90deg);
-            color: var(--accent);
-        }
+    nav details[open]>summary::before {
+        transform: rotate(90deg);
+        color: var(--accent);
+    }
 
-        nav summary:focus {
-            outline: 1px solid var(--accent);
-            outline-offset: -1px;
-            background: var(--accent-contrast);
-        }
+    nav summary:focus {
+        outline: 1px solid var(--accent);
+        outline-offset: -1px;
+        background: var(--accent-contrast);
+    }
 
-        nav ul {
-            list-style: none;
-            padding-left: 1rem;
-            margin: 0.25rem 0 0.5rem;
-        }
+    nav ul {
+        list-style: none;
+        padding-left: 1rem;
+        margin: 0.25rem 0 0.5rem;
+    }
 
-        nav li + li {
-            margin-top: 0.125rem;
-        }
+    nav li+li {
+        margin-top: 0.125rem;
+    }
 
-        nav a {
-            display: block;
-            padding: 0.35rem 0.5rem;
-            border-radius: 4px;
-            color: var(--muted);
-            text-decoration: none;
-        }
+    nav a {
+        display: block;
+        padding: 0.35rem 0.5rem;
+        border-radius: 4px;
+        color: var(--muted);
+        text-decoration: none;
+    }
 
-            nav a:hover {
-                background: rgba(0,122,204,0.08);
-                color: var(--text);
-            }
+    nav a:hover {
+        background: rgba(0, 122, 204, 0.08);
+        color: var(--text);
+    }
 
-            nav a:focus {
-                outline: 1px solid var(--accent);
-                outline-offset: -1px;
-                background: rgba(0,122,204,0.12);
-            }
+    nav a:focus {
+        outline: 1px solid var(--accent);
+        outline-offset: -1px;
+        background: rgba(0, 122, 204, 0.12);
+    }
 
-            nav a[aria-current="page"] {
-                background: rgba(0,122,204,0.15);
-                color: var(--accent);
-            }
+    nav a[aria-current="page"] {
+        background: rgba(0, 122, 204, 0.15);
+        color: var(--accent);
+    }
+
     /* Main content */
     main {
         flex: 1;
@@ -139,44 +170,49 @@
         overflow-y: auto;
     }
 
-        main h1 {
-            color: var(--h1-color);
-            font-size: 2.0rem; /* 36px */
-            line-height: 1.15;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            margin: 0 0 0.6rem 0;
-            font-style: normal;
-            font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-        }
+    main h1 {
+        color: var(--h1-color);
+        font-size: 1.9rem;
+        /* 36px */
+        line-height: 1.15;
+        font-weight: 400;
+        letter-spacing: -0.02em;
+        margin: 0 0 0.6rem 0;
+        font-style: normal;
+        font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
 
-        main h2 {
-            color: var(--h2-color);
-            font-size: 1.7rem; /* 24px */
-            line-height: 1.25;
-            font-weight: 600;
-            letter-spacing: -0.01em;
-            margin: 1rem 0 0.5rem 0;
-            font-style: normal;
-        }
+    main h2 {
+        color: var(--h2-color);
+        font-size: 1.6rem;
+        /* 24px */
+        line-height: 1.25;
+        font-weight: 300;
+        letter-spacing: -0.01em;
+        margin: 1rem 0 0.5rem 0;
+        font-style: normal;
+    }
 
-        main h3 {
-            color: var(--h3-color);
-            font-size: 1.5rem; /* 18px */
-            line-height: 1.3;
-            font-weight: 600;
-            letter-spacing: 0;
-            margin: 0.75rem 0 0.4rem 0;
-            font-style: normal;
-        }
+    main h3 {
+        color: var(--h3-color);
+        font-size: 1.4rem;
+        /* 18px */
+        line-height: 1.3;
+        font-weight: 300;
+        letter-spacing: 0;
+        margin: 0.75rem 0 0.4rem 0;
+        font-style: normal;
+    }
 
-        main p {
-            color: var(--text);
-            font-size: 1.3rem; /* 16px */
-            line-height: 1.6;
-            margin: 0 0 1rem 0;
-            font-weight: 400;
-        }
+    main p {
+        color: var(--text);
+        font-size: 2rem;
+        /* 16px */
+        line-height: 1.6;
+        margin: 0 0 1rem 0;
+        font-weight: 400;
+    }
+
     /*syntex highlighter*/
 
     .code-container {
@@ -197,13 +233,13 @@
         cursor: pointer;
     }
 
-        .copy-btn:hover {
-            background: #14213b;
-        }
+    .copy-btn:hover {
+        background: #14213b;
+    }
 
-        .copy-btn:active {
-            transform: translateY(1px);
-        }
+    .copy-btn:active {
+        transform: translateY(1px);
+    }
 
     .code-block {
         background: #0b1220;
@@ -214,38 +250,47 @@
         font-size: 14px;
         line-height: 1.6;
         overflow: auto;
-        white-space: pre; /* preserve spacing */
+        white-space: pre;
+        /* preserve spacing */
     }
+
     /* Token styles */
     .kw {
         color: #ff7b72;
         font-weight: 600;
     }
+
     /* keywords */
     .type {
         color: #63d1ff;
     }
+
     /* types */
     .str {
         color: #9eea9b;
     }
+
     /* strings/chars */
     .num {
         color: #ffb86b;
     }
+
     /* numbers */
     .cm {
         color: #6b7280;
         font-style: italic;
     }
+
     /* comments */
     .pun {
         color: #cbd5e1;
     }
+
     /* punctuation */
     .pln {
         color: #cbd5e1;
     }
+
     /* identifiers/plain */
     /*--------------------------------------------*/
     @media (max-width: 700px) {
@@ -265,10 +310,10 @@
     }
 
     main::-webkit-scrollbar-thumb {
-        background: rgba(255,255,255,0.12);
+        background: rgba(255, 255, 255, 0.12);
         border-radius: 4px;
     }
 
-        main::-webkit-scrollbar-thumb:hover {
-            background: rgba(255,255,255,0.20);
-        }
+    main::-webkit-scrollbar-thumb:hover {
+        background: rgba(255, 255, 255, 0.20);
+    }
