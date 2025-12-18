@@ -52,3 +52,15 @@ CodeCoverage/
 *.VisualState.xml
 TestResult.xml
 nunit-*.xml
+
+*.pdb
+*.obj
+**/bin/
+Src/bin/
+*/.hg/
+*/.hgignore
+*/.hgtags
+*/.vs/
+**/.vs/
+*/obj/
+**/obj/
