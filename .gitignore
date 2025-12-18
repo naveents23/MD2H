@@ -64,3 +64,5 @@ Src/bin/
 **/.vs/
 */obj/
 **/obj/
+.vs/
+Properties/
