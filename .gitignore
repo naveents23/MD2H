@@ -66,3 +66,4 @@ Src/bin/
 **/obj/
 .vs/
 Properties/
+*.user
