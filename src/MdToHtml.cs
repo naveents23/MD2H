@@ -1,7 +1,5 @@
 ﻿using Md2h.Html;
-using System.Text;
 using System.Text.RegularExpressions;
-
 
 namespace Md2h {
    #region Class MdnToHtml ------------------------------------------------------------------------
@@ -95,12 +93,14 @@ namespace Md2h {
          }
          mHtml.AddBody (new P (Line));
       }
+
       private void ProcessImage () {
          Line = Regex.Replace (Line, mImagePattern, m => Util.Image (m.Groups[1].Value, m.Groups[2].Value));
          mHtml.AddBody (new Div (Line));
       }
+
       private void ProcessCodeBlock (string v) {
-        string highLightedStr = SynHighLighter.CSharpSyntaxHighlighter(v);
+         string highLightedStr = new CSharpHighLight ().Highlight (v);
          mHtml.AddBody (new CODE (highLightedStr));
          sb.Clear ();
       }
@@ -159,7 +159,7 @@ namespace Md2h {
          DirectoryInfo dirInfo = new (currentDir);
          var directories = dirInfo.EnumerateDirectories ();
          var root = new Node () { DName = "root", Child = [] };
-         HashSet<string> outDir = [".git","Content", "Res", "Img", "ZOut"];
+         HashSet<string> outDir = [".git", "Content", "Res", "Img", "ZOut"];
          foreach (var dir in directories) {
             if (outDir.Contains (dir.Name)) continue;
             var node = new Node { DName = dir.Name, IsFolder = true, Child = [] };

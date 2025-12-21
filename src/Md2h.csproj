@@ -12,8 +12,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="JS.js" />
-    <EmbeddedResource Include="Style.css" />
+    <EmbeddedResource Include="Asset\JS.js" />
+    <EmbeddedResource Include="Asset\Style.css" />
   </ItemGroup>
 
 </Project>
