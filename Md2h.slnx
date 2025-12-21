@@ -2,5 +2,5 @@
   <Folder Name="/Solution Items/">
     <File Path="JS.js" />
   </Folder>
-  <Project Path="Md2h.csproj" />
+  <Project Path="src/Md2h.csproj" />
 </Solution>

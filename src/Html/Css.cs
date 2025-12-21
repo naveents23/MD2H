@@ -8,15 +8,16 @@ public static class Css {
       //if (Path.Exists (Path.Combine (Path.GetDirectoryName (Environment.ProcessPath)!, "Style.css"))) {
       //   return File.ReadAllText (Path.Combine (Path.GetDirectoryName (Environment.ProcessPath)!, "Style.css"));
       //}
-      using Stream? stream = Assembly.GetExecutingAssembly ().GetManifestResourceStream ("Md2h.Style.css"); // Embedded resource name
+      using Stream? stream = Assembly.GetExecutingAssembly ().GetManifestResourceStream ("Md2h.Asset.Style.css"); // Embedded resource name
          using StreamReader reader = new (stream!);
          string content = reader.ReadToEnd ();
       return content;
    }
 }
+
 public static class JS {
    public static string Build () {
-      using Stream? stream = Assembly.GetExecutingAssembly ().GetManifestResourceStream ("Md2h.JS.js"); // Embedded resource name
+      using Stream? stream = Assembly.GetExecutingAssembly ().GetManifestResourceStream ("Md2h.Asset.JS.js"); // Embedded resource name
          using StreamReader reader = new (stream!);
          string content = reader.ReadToEnd ();
       return content;
