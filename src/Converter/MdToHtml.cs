@@ -42,6 +42,11 @@ namespace Md2h {
          var enumerator = mLines.GetEnumerator ();
          while (enumerator.MoveNext ()) {
             Line = enumerator.Current.ToString ()!;
+            // break
+            if (string.IsNullOrEmpty (Line)) { 
+               mHtml.AddBody (new Break ()); continue;
+            }
+           
             if (!IsBreakLine && IsUnOrderedListItem (Line)) {
                while (IsUnOrderedListItem (Line)) {
                   sb.AppendLine (mL[1..]);
@@ -50,6 +55,7 @@ namespace Md2h {
                }
                ProcessUnOrderedListItem (sb.ToString ());
             }
+
             if (IsBreakLine) {
                mHtml.AddBody (new HorizontalLine ());
                IsBreakLine = false;
@@ -58,9 +64,9 @@ namespace Md2h {
             if (Line.StartsWith ('#')) {
                ProcessHeading (); continue;
             } else if (IsCodeBlock (Line)) {
-               if (Line.Length > 3) mCodeBlockLanguage = Line[4..]; // Capture code block language for syntax highlighter
+               if (Line.Length > 3) mCodeBlockLanguage = Line[3..]; // Capture code block language for syntax highlighter
                while (enumerator.MoveNext ()) {
-                  var current = enumerator.Current.ToString ()!;
+                  var current = enumerator.Current.ToString ()?.Trim()!;
                   if (IsCodeBlock (current)) break;
                   sb.AppendLine (current);
                }
@@ -102,7 +108,7 @@ namespace Md2h {
 
       private void ProcessCodeBlock (string v) {
          string[] csharp = ["cs", "csharp"];
-         string[] angular = ["ng", "angular", "ang"];
+         string[] angular = ["ts","ng", "angular", "ang"];
          if (mCodeBlockLanguage.ContainsIc (csharp)) {
             string highLightedStr = new CSharpHighLight ().Highlight (v);
             mHtml.AddBody (new CODE (highLightedStr));

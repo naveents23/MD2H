@@ -184,3 +184,8 @@ public class Table (IEnumerable<string> head, IEnumerable<IEnumerable<string>> d
    }
 }
 
+public class Break : IBody {
+   public string Build () {
+      return Util.Break ();
+   }
+}

@@ -42,7 +42,7 @@ public static class Util {
       return @$" <div class=""code-container"">
                     <button class=""copy-btn"" type=""button"" aria-label=""Copy code"">Copy</button>
                       <pre class=""code-block"">
-                   {code}
+ {code}
                 </code>
             </pre>
          </div>";
@@ -77,5 +77,7 @@ public static class Util {
       }
       return sb.ToString ();
    }
+
+   public static string Break () => "\r\n<br>";
 }
 

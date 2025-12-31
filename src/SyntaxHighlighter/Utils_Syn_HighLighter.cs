@@ -28,7 +28,7 @@ public static class UtilsSynHL {
    /// <param name="cls"></param>
    /// <returns>wrapped text  for css highlight </returns>
    public static string Wrap (string token, EToken cls)
-          => $"<span class=\"{nameof (cls)}\">{HtmlEncode (token)}</span>";
+          => $"<span class=\"{cls}\">{HtmlEncode (token)}</span>";
 }
 
 // keyword ,type,number,string,template,decorator,comment,punctuation,Plain

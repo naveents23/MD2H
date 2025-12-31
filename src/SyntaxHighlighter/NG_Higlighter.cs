@@ -2,7 +2,7 @@
 
 namespace Md2h {
 
-   public  class AngularTypeScriptHighlighter {
+   public class AngularTypeScriptHighlighter {
       // TypeScript/JS keywords (case-sensitive)
       private static readonly HashSet<string> Keywords = new (StringComparer.Ordinal)
       {
@@ -27,7 +27,7 @@ namespace Md2h {
       // Built-in TS types (case-sensitive)
       private static readonly HashSet<string> Types = new (StringComparer.Ordinal)
       {
-            "string","number","boolean","bigint","symbol","object","any",
+            "string","number","boolean","bigint","symbol","object","any","console",
             "unknown","never","void","null","undefined"
         };
 
@@ -61,7 +61,6 @@ namespace Md2h {
       // Public API: convert TypeScript/Angular source to highlighted HTML
       public string Highlight (string source) {
          if (source == null) return string.Empty;
-
          var sb = new StringBuilder (source.Length * 2);
          int last = 0;
 
@@ -71,9 +70,8 @@ namespace Md2h {
                sb.Append (UtilsSynHL.HtmlEncode (source.Substring (last, m.Index - last)));
             }
 
-            var token = m.Value;
-            EToken cls = DetermineClass (m, token);
-            sb.Append (UtilsSynHL.Wrap (token, cls));
+            var token = m.Value.Trim ();
+            sb.Append (UtilsSynHL.Wrap (token, DetermineClass (m, token)));
 
             last = m.Index + m.Length;
          }

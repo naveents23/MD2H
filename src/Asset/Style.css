@@ -36,6 +36,7 @@
 
     body {
         display: flex;
+        width: 120rem;
     }
 
     li {
@@ -162,8 +163,11 @@
     /* Main content */
     main {
         flex: 1;
-        padding: 2rem;
+        padding-top: 2rem;
+        padding-left: 15rem;
+        padding-bottom: 2rem;
         overflow-y: auto;
+        padding-right: 50px;
     }
 
         main h1 {
@@ -314,4 +318,18 @@
         main::-webkit-scrollbar-thumb:hover {
             background: rgba(255, 255, 255, 0.20);
         }
+}
+
+/* Dark-theme quote block */
+.quote-dark {
+    color: #e6eef6; /* light text for readability on dark bg */
+    background: rgba(255,255,255,0.02); /* very subtle panel */
+    border-left: 4px solid rgba(255,255,255,0.12); /* soft light border */
+    margin: 1rem 0;
+    padding: 0.75rem 1rem;
+    font-style: italic;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 6px;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.4) inset; /* subtle depth */
 }
