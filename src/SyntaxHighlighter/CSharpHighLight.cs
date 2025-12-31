@@ -9,13 +9,6 @@
 using System.Text.RegularExpressions;
 
 namespace Md2h {
-   #region Enums: Token categories --------------------------------------------------------------
-   /// <summary>
-   /// Token categories used as CSS class names in the generated HTML.
-   /// </summary>
-   public enum EToken { kw, type, num, str, cm, pun, pln }
-   #endregion
-
    public class CSharpHighLight {
       #region Public API: Highlighter -----------------------------------------------------------
       /// <summary>

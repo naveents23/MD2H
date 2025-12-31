@@ -1,9 +1,5 @@
 ﻿// It is command line tool to convert .md(markdown ) to html file)
 
-using Md2h.Html;
-using System.Text.Json;
-using System.Threading.Channels;
-
 namespace Md2h;
 
 public class Program {
@@ -14,8 +10,10 @@ public class Program {
    }
 
    private static void ShowHelp () {
-      string helpNotes = "Markdown to html converter \n Add exe location into Path section\n" +
-         "To run: From the Markdown file location open via cmd and Enter like => md2h . ";
+      string helpNotes =
+         "Markdown to html converter v 1.1\r\n" +
+         "Add exe location into Path section\r\n" +
+         "To run: From the Markdown Folder file location open via cmd and Enter like => md2h .\r\n ";
       Console.WriteLine (helpNotes);
    }
 

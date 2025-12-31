@@ -58,6 +58,7 @@ namespace Md2h {
             if (Line.StartsWith ('#')) {
                ProcessHeading (); continue;
             } else if (IsCodeBlock (Line)) {
+               if (Line.Length > 3) mCodeBlockLanguage = Line[4..]; // Capture code block language for syntax highlighter
                while (enumerator.MoveNext ()) {
                   var current = enumerator.Current.ToString ()!;
                   if (IsCodeBlock (current)) break;
@@ -100,9 +101,17 @@ namespace Md2h {
       }
 
       private void ProcessCodeBlock (string v) {
-         string highLightedStr = new CSharpHighLight ().Highlight (v);
-         mHtml.AddBody (new CODE (highLightedStr));
+         string[] csharp = ["cs", "csharp"];
+         string[] angular = ["ng", "angular", "ang"];
+         if (mCodeBlockLanguage.ContainsIc (csharp)) {
+            string highLightedStr = new CSharpHighLight ().Highlight (v);
+            mHtml.AddBody (new CODE (highLightedStr));
+         } else if (mCodeBlockLanguage.ContainsIc (angular)) {
+            string highLightedNg = new AngularTypeScriptHighlighter ().Highlight (v);
+            mHtml.AddBody (new CODE (highLightedNg));
+         } else mHtml.AddBody (new CODE (v));
          sb.Clear ();
+         mCodeBlockLanguage = "";
       }
 
       private void ProcessBlockQuote () => mHtml.AddBody (new BlockQuote (Line[1..]));
@@ -213,6 +222,7 @@ namespace Md2h {
       IEnumerable<string> mAsideText; // Aside Links
       string mCurDir; // Current Directory
       Node mAsideRoot;
+      string mCodeBlockLanguage = "";
       #endregion
    }
 

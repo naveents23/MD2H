@@ -22,7 +22,7 @@ namespace Md2h.Html {
          // Helper Methods
          void OutAsideFile (Node fileNode) {
             if (Html.IsIndex) {
-               // first arg display text,Second arg is relative path w.r.t index.
+               // first arg display text,Second arg is relative path w.r.t index.html.
                var s = new WebLink (fileNode.DName, string.Concat ("ZOut/Content/", fileNode.DName, ".html")).Build ();
                sb.AppendLine ($"    <li>{s}</li>");
             } else {
