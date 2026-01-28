@@ -43,10 +43,10 @@ namespace Md2h {
          while (enumerator.MoveNext ()) {
             Line = enumerator.Current.ToString ()!;
             // break
-            if (string.IsNullOrEmpty (Line)) { 
+            if (string.IsNullOrEmpty (Line)) {
                mHtml.AddBody (new Break ()); continue;
             }
-           
+
             if (!IsBreakLine && IsUnOrderedListItem (Line)) {
                while (IsUnOrderedListItem (Line)) {
                   sb.AppendLine (mL[1..]);
@@ -66,7 +66,7 @@ namespace Md2h {
             } else if (IsCodeBlock (Line)) {
                if (Line.Length > 3) mCodeBlockLanguage = Line[3..]; // Capture code block language for syntax highlighter
                while (enumerator.MoveNext ()) {
-                  var current = enumerator.Current.ToString ()?.Trim()!;
+                  var current = enumerator.Current.ToString ()?.Trim ()!;
                   if (IsCodeBlock (current)) break;
                   sb.AppendLine (current);
                }
@@ -108,13 +108,25 @@ namespace Md2h {
 
       private void ProcessCodeBlock (string v) {
          string[] csharp = ["cs", "csharp"];
-         string[] angular = ["ts","ng", "angular", "ang"];
+         string[] angular = ["ts", "ng", "angular", "ang"];
+         string[] js = ["js"];
+         string[] html = ["html", "htm"];
+         string[] css = ["css"];
          if (mCodeBlockLanguage.ContainsIc (csharp)) {
             string highLightedStr = new CSharpHighLight ().Highlight (v);
             mHtml.AddBody (new CODE (highLightedStr));
          } else if (mCodeBlockLanguage.ContainsIc (angular)) {
             string highLightedNg = new AngularTypeScriptHighlighter ().Highlight (v);
             mHtml.AddBody (new CODE (highLightedNg));
+         } else if (mCodeBlockLanguage.ContainsIc (js)) {
+            string highLightedJs = new JavaScriptHighLight ().Highlight (v);
+            mHtml.AddBody (new CODE (highLightedJs));
+         } else if (mCodeBlockLanguage.ContainsIc (html)) {
+            string highLightedHtml = new HtmlHighLight ().Highlight (v);
+            mHtml.AddBody (new CODE (highLightedHtml));
+         } else if (mCodeBlockLanguage.ContainsIc (css)) {
+            string highLightedCss = new CssHighLight ().Highlight (v);
+            mHtml.AddBody (new CODE (highLightedCss));
          } else mHtml.AddBody (new CODE (v));
          sb.Clear ();
          mCodeBlockLanguage = "";
