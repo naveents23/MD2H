@@ -95,7 +95,7 @@ namespace Md2h {
          if (Regex.IsMatch (Line, mImagePattern)) {
             ProcessImage ();
             return;
-         } else if (Regex.Match (Line, mLinkPattern).Success) {
+         } else if (Regex.IsMatch (Line, mLinkPattern)) {
             Line = Regex.Replace (Line, mLinkPattern, m => Util.Link (m.Groups[1].Value, m.Groups[2].Value));
          }
          mHtml.AddBody (new P (Line));
@@ -108,8 +108,8 @@ namespace Md2h {
 
       private void ProcessCodeBlock (string v) {
          string[] csharp = ["cs", "csharp"];
-         string[] angular = ["ts", "ng", "angular", "ang"];
-         string[] js = ["js"];
+         string[] angular = ["ts", "ng", "angular", "ang","typescript"];
+         string[] js = ["js","javascript"];
          string[] html = ["html", "htm"];
          string[] css = ["css"];
          if (mCodeBlockLanguage.ContainsIc (csharp)) {
@@ -205,13 +205,13 @@ namespace Md2h {
       public string Line {
          get => mL;
          set {
-            var rawTxt = value.Trim ();
-            if (Regex.Match (rawTxt, mBreak).Success) {
+            var rawTxt = value.TrimEnd();
+            if (Regex.IsMatch (rawTxt, mBreak)) {
                mL = "";
                IsBreakLine = true;
                return;
             }
-            if (Regex.Match (rawTxt, mBoldPattern).Success) {
+            if (Regex.IsMatch (rawTxt, mBoldPattern)) {
                rawTxt = Regex.Replace (rawTxt, mBoldPattern, m => Util.Bold (m.Groups[1].Value ?? m.Groups[2].Value));
             }
             if (Regex.Match (rawTxt, mItalicPattern).Success) {

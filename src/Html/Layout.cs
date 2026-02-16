@@ -28,7 +28,6 @@ public class Html {
          );
 
       sb.AppendLine ($"<title>{Title}</title>");
-      sb.AppendLine (CodeHelperhead ());
       sb.AppendLine ($"</head>");
       sb.AppendLine ("<body>");
       sb.AppendLine (Aside.Build ());
@@ -76,10 +75,6 @@ public class Html {
       if (IsIndex) script += new Script ("ZOut/Res/JS.js").Build ();
       else script += new Script ("../Res/JS.js").Build ();
       return new Div (script).Build ();
-   }
-
-   static string CodeHelperhead () {
-      return " <div>\r\n        <link href=\" https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css\" rel=\"stylesheet\" />\r\n    </div>";
    }
    #endregion
 
